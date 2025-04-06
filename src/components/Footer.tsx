@@ -2,6 +2,7 @@
 import React from 'react';
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { motion } from 'framer-motion';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -15,27 +16,38 @@ const Footer = () => {
   ];
   
   return (
-    <footer className="bg-gray-900 text-white py-8">
+    <footer className="bg-blue dark:bg-blue-dark text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <p className="text-gray-400">
+          <motion.div 
+            className="mb-4 md:mb-0"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-white/90">
               &copy; {currentYear} Your Name. {t('footer', 'rights')}
             </p>
-          </div>
+          </motion.div>
           
           <div className="flex space-x-6">
-            {socialLinks.map((link) => (
-              <a
+            {socialLinks.map((link, index) => (
+              <motion.a
                 key={link.name}
                 href={link.url}
                 aria-label={link.name}
-                className="text-gray-400 hover:text-teal transition-colors duration-300"
+                className="text-white/80 hover:text-lime transition-colors duration-300"
                 target="_blank"
                 rel="noopener noreferrer"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: index * 0.1 }}
+                whileHover={{ scale: 1.2 }}
               >
                 {link.icon}
-              </a>
+              </motion.a>
             ))}
           </div>
         </div>
