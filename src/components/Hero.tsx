@@ -1,29 +1,31 @@
 
 import React from 'react';
 import { ArrowDown } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   return (
     <section id="home" className="min-h-screen flex items-center relative bg-gradient-to-br from-white to-blue-50">
       <div className="section-container">
         <div className="grid md:grid-cols-2 gap-8 items-center">
           <div className="animate-fade-in">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-              Hi, I'm <span className="text-teal">Your Name</span>
+              {t('hero', 'title')} <span className="text-teal">Your Name</span>
             </h1>
             <h2 className="text-2xl md:text-3xl text-gray-700 mb-6">
-              Software Developer & Designer
+              {t('hero', 'subtitle')}
             </h2>
             <p className="text-gray-600 mb-8 text-lg">
-              I build exceptional and accessible digital experiences
-              for the web.
+              {t('hero', 'description')}
             </p>
             <div className="flex gap-4">
               <a href="#portfolio" className="btn-primary">
-                View My Work
+                {t('hero', 'viewWork')}
               </a>
               <a href="#contact" className="btn-secondary">
-                Contact Me
+                {t('hero', 'contactMe')}
               </a>
             </div>
           </div>

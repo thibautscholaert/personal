@@ -1,9 +1,11 @@
 
 import React from 'react';
 import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useLanguage();
   
   const socialLinks = [
     { name: 'GitHub', icon: <Github size={20} />, url: '#' },
@@ -18,7 +20,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
             <p className="text-gray-400">
-              &copy; {currentYear} Your Name. All rights reserved.
+              &copy; {currentYear} Your Name. {t('footer', 'rights')}
             </p>
           </div>
           

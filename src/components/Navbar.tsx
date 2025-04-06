@@ -2,10 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import LanguageSwitch from './LanguageSwitch';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -17,11 +20,11 @@ const Navbar = () => {
   }, []);
 
   const navLinks = [
-    { name: 'Home', href: '#home' },
-    { name: 'About', href: '#about' },
-    { name: 'Portfolio', href: '#portfolio' },
-    { name: 'Technologies', href: '#technologies' },
-    { name: 'Contact', href: '#contact' },
+    { name: t('navbar', 'home'), href: '#home' },
+    { name: t('navbar', 'about'), href: '#about' },
+    { name: t('navbar', 'portfolio'), href: '#portfolio' },
+    { name: t('navbar', 'technologies'), href: '#technologies' },
+    { name: t('navbar', 'contact'), href: '#contact' },
   ];
 
   return (
@@ -38,7 +41,7 @@ const Navbar = () => {
           </a>
           
           {/* Desktop menu */}
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex items-center space-x-8">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -48,6 +51,7 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <LanguageSwitch />
           </div>
           
           {/* Mobile menu button */}
@@ -74,6 +78,9 @@ const Navbar = () => {
                 {link.name}
               </a>
             ))}
+            <div className="py-2">
+              <LanguageSwitch />
+            </div>
           </div>
         </div>
       )}
