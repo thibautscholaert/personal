@@ -9,7 +9,7 @@ const Hero = () => {
   return (
     <section id="home" className="min-h-screen flex items-center relative bg-gradient-to-br from-background to-muted">
       <div className="section-container">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
+        <div className="grid md:grid-cols-2 gap-2 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
@@ -52,6 +52,14 @@ const Hero = () => {
                 whileTap={{ scale: 0.95 }}
               >
                 {t('hero', 'viewWork')}
+              </motion.a>
+              <motion.a
+                href="#technologies"
+                className="btn-secondary"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {t('hero', 'technologies')}
               </motion.a>
               <motion.a
                 href="#contact"

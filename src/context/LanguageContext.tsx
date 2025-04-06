@@ -12,10 +12,11 @@ const translations = {
     },
     hero: {
       title: "Hi, I'm",
-      subtitle: 'Fullstack Developer',
-      description: 'I build exceptional and accessible digital experiences for the web.',
+      subtitle: '🚀 Fullstack Developer',
+      description: 'Freelance in addition to my main activity, I am available in the evening and on weekends for development missions, architecture optimization or technical support.',
       viewWork: 'View My Work',
       contactMe: 'Contact Me',
+      technologies: 'Tech Stack',
     },
     // about: {
     //   title: 'About Me',
@@ -88,10 +89,11 @@ const translations = {
     },
     hero: {
       title: "Bonjour, je suis",
-      subtitle: 'Développeur Fullstack',
-      description: 'Je crée des expériences numériques exceptionnelles et accessibles pour le web.',
+      subtitle: '🚀 Développeur Fullstack',
+      description: 'Freelance en complément de mon activité principale, je suis disponible en soirée et le week-end pour des missions de développement, d\'optimisation d\'architectures ou d\'accompagnement technique.',
       viewWork: 'Voir Mes Projets',
       contactMe: 'Me Contacter',
+      technologies: 'Compétences',
     },
     // about: {
     //   title: 'À Propos de Moi',
