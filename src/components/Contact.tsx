@@ -1,8 +1,10 @@
-
 import React, { useState } from 'react';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 const Contact = () => {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -35,41 +37,54 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-16 bg-navy text-white">
+    <section id="contact" className="min-h-[calc(100vh-72px)] flex items-center relative bg-gradient-to-br from-background to-muted">
       <div className="section-container">
-        <h2 className="section-title text-white after:bg-teal">Get In Touch</h2>
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {t('contact', 'title')}
+        </motion.h2>
         
         <div className="grid md:grid-cols-2 gap-12">
-          <div>
-            <p className="mb-8 text-gray-300">
-              I'm interested in freelance opportunities – especially ambitious or large projects. 
-              If you have a request or question, don't hesitate to use the form or contact me via 
-              email or phone.
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="mb-8 text-foreground/80">
+              {t('contact', 'description')}
             </p>
             
             <div className="space-y-6">
               <div className="flex items-center">
-                <Mail className="text-teal mr-4" size={20} />
-                <span>yourname@example.com</span>
+                <Mail className="text-accent mr-4" size={20} />
+                <span className="text-foreground">thibautscholaert@gmail.com</span>
               </div>
               
-              <div className="flex items-center">
-                <Phone className="text-teal mr-4" size={20} />
-                <span>(123) 456-7890</span>
-              </div>
+              {/* <div className="flex items-center">
+                <Phone className="text-accent mr-4" size={20} />
+                <span className="text-foreground">(123) 456-7890</span>
+              </div> */}
               
               <div className="flex items-center">
-                <MapPin className="text-teal mr-4" size={20} />
-                <span>San Francisco, CA</span>
+                <MapPin className="text-accent mr-4" size={20} />
+                <span className="text-foreground">{t('contact', 'location')}</span>
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          <div>
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block mb-2 text-gray-300">
-                  Your Name
+                <label htmlFor="name" className="block mb-2 text-foreground/80">
+                  {t('contact', 'nameLabel')}
                 </label>
                 <input
                   type="text"
@@ -78,14 +93,14 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-navy-light border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-teal text-white"
-                  placeholder="John Doe"
+                  className="w-full px-4 py-3 bg-card border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                  placeholder={t('contact', 'namePlaceholder')}
                 />
               </div>
               
               <div>
-                <label htmlFor="email" className="block mb-2 text-gray-300">
-                  Email Address
+                <label htmlFor="email" className="block mb-2 text-foreground/80">
+                  {t('contact', 'emailLabel')}
                 </label>
                 <input
                   type="email"
@@ -94,14 +109,14 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 bg-navy-light border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-teal text-white"
-                  placeholder="john@example.com"
+                  className="w-full px-4 py-3 bg-card border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                  placeholder={t('contact', 'emailPlaceholder')}
                 />
               </div>
               
               <div>
-                <label htmlFor="message" className="block mb-2 text-gray-300">
-                  Message
+                <label htmlFor="message" className="block mb-2 text-foreground/80">
+                  {t('contact', 'messageLabel')}
                 </label>
                 <textarea
                   id="message"
@@ -110,33 +125,40 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 bg-navy-light border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-teal text-white"
-                  placeholder="Your message here..."
+                  className="w-full px-4 py-3 bg-card border border-border rounded-md focus:outline-none focus:ring-2 focus:ring-accent text-foreground"
+                  placeholder={t('contact', 'messagePlaceholder')}
                 />
               </div>
               
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-teal hover:bg-teal-light text-navy font-semibold px-6 py-3 rounded-md transition-colors duration-300 flex items-center justify-center"
+                className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-6 py-3 rounded-md transition-colors duration-300 flex items-center justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
                 {isSubmitting ? (
-                  'Sending...'
+                  t('contact', 'sending')
                 ) : (
                   <>
                     <Send size={18} className="mr-2" />
-                    Send Message
+                    {t('contact', 'sendButton')}
                   </>
                 )}
-              </button>
+              </motion.button>
               
               {submitSuccess && (
-                <div className="bg-green-900/30 border border-green-500 text-green-300 px-4 py-3 rounded">
-                  Message sent successfully! I'll get back to you soon.
-                </div>
+                <motion.div 
+                  className="bg-accent/20 border border-accent text-accent px-4 py-3 rounded"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                >
+                  {t('contact', 'successMessage')}
+                </motion.div>
               )}
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

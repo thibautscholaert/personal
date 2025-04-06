@@ -81,13 +81,6 @@ export default {
           DEFAULT: '#000000e6',
           foreground: '#ffffff'
         },
-        lime: {
-          DEFAULT: '#a3e635',
-          400: '#a3e635'
-        },
-        pink: {
-          accent: '#f43f5e'
-        }
       },
       borderRadius: {
         lg: 'var(--radius)',

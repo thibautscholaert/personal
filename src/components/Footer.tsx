@@ -1,25 +1,22 @@
 
-import React from 'react';
-import { Github, Linkedin, Twitter, Instagram } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
+import { Github, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   const { t } = useLanguage();
-  
+
   const socialLinks = [
-    { name: 'GitHub', icon: <Github size={20} />, url: '#' },
-    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: '#' },
-    { name: 'Twitter', icon: <Twitter size={20} />, url: '#' },
-    { name: 'Instagram', icon: <Instagram size={20} />, url: '#' },
+    { name: 'GitHub', icon: <Github size={20} />, url: 'https://github.com/thibautscholaert' },
+    { name: 'LinkedIn', icon: <Linkedin size={20} />, url: 'https://www.linkedin.com/in/thibaut-scholaert-032b0592/' },
   ];
-  
+
   return (
-    <footer className="bg-blue dark:bg-blue-dark text-white py-8">
+    <footer className="bg-lime dark:bg-lime-dark text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col md:flex-row justify-between items-center">
-          <motion.div 
+          <motion.div
             className="mb-4 md:mb-0"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -27,10 +24,10 @@ const Footer = () => {
             transition={{ duration: 0.5 }}
           >
             <p className="text-white/90">
-              &copy; {currentYear} Your Name. {t('footer', 'rights')}
+              &copy; {currentYear} Thibaut Scholaert. {t('footer', 'rights')}
             </p>
           </motion.div>
-          
+
           <div className="flex space-x-6">
             {socialLinks.map((link, index) => (
               <motion.a

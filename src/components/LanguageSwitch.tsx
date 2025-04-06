@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { Globe } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
 import { useLanguage } from '@/context/LanguageContext';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 const LanguageSwitch = () => {
   const { language, setLanguage } = useLanguage();
@@ -14,19 +14,34 @@ const LanguageSwitch = () => {
 
   return (
     <motion.div 
-      className="flex items-center space-x-2"
+      className="flex items-center gap-2 rounded-md px-2 py-1.5 transition-colors"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.2 }}
     >
-      <Globe size={18} className="text-foreground" />
-      <span className={`text-sm font-medium ${language === 'en' ? 'text-blue' : 'text-foreground/70'}`}>EN</span>
+      <Globe className="h-4 w-4 text-muted-foreground" />
+      <span 
+        className={cn(
+          "text-sm font-medium transition-colors",
+          language === 'en' ? 'text-foreground' : 'text-muted-foreground'
+        )}
+      >
+        EN
+      </span>
       <Switch 
         checked={language === 'fr'}
         onCheckedChange={toggleLanguage}
         aria-label="Toggle language"
+        className="data-[state=checked]:bg-accent"
       />
-      <span className={`text-sm font-medium ${language === 'fr' ? 'text-blue' : 'text-foreground/70'}`}>FR</span>
+      <span 
+        className={cn(
+          "text-sm font-medium transition-colors",
+          language === 'fr' ? 'text-foreground' : 'text-muted-foreground'
+        )}
+      >
+        FR
+      </span>
     </motion.div>
   );
 };

@@ -23,7 +23,7 @@ const Navbar = () => {
 
   const navLinks = [
     { name: t('navbar', 'home'), href: '#home' },
-    { name: t('navbar', 'about'), href: '#about' },
+    // { name: t('navbar', 'about'), href: '#about' },
     { name: t('navbar', 'portfolio'), href: '#portfolio' },
     { name: t('navbar', 'technologies'), href: '#technologies' },
     { name: t('navbar', 'contact'), href: '#contact' },
@@ -36,18 +36,19 @@ const Navbar = () => {
       transition={{ type: 'spring', stiffness: 100 }}
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled ? 'bg-background shadow-md py-2' : 'bg-transparent py-4'
+        scrolled ? 'bg-background shadow-md py-4' : 'bg-transparent py-4'
       )}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center">
           <motion.a 
             href="#home" 
-            className="text-xl font-bold text-blue"
+            className="text-xl font-bold text-lime"
             whileHover={{ scale: 1.05 }}
           >
-            <span className="text-lime">Your</span>Name
-          </motion.a>
+            <span className="text-lime-300">Thibaut</span>
+            <span className="text-lime-400">Scholaert</span>
+            </motion.a>
           
           {/* Desktop menu */}
           <div className="hidden md:flex items-center space-x-6">
@@ -55,7 +56,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="text-foreground hover:text-blue transition-colors duration-300"
+                className="text-foreground hover:text-lime transition-colors duration-300"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -94,7 +95,7 @@ const Navbar = () => {
               <motion.a
                 key={link.name}
                 href={link.href}
-                className="block py-2 text-foreground hover:text-blue transition-colors duration-300"
+                className="block py-2 text-foreground hover:text-lime transition-colors duration-300"
                 onClick={() => setIsMenuOpen(false)}
                 whileHover={{ x: 5 }}
               >

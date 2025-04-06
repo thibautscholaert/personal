@@ -1,67 +1,82 @@
-
 import React from 'react';
 import { FileText } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { useLanguage } from '@/context/LanguageContext';
 
 const About = () => {
+  const { t } = useLanguage();
+
   return (
-    <section id="about" className="py-16 bg-white">
+    <section id="about" className="py-16 bg-gradient-to-br from-background to-muted">
       <div className="section-container">
-        <h2 className="section-title">About Me</h2>
+        <motion.h2 
+          className="section-title"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {t('about', 'title')}
+        </motion.h2>
         
         <div className="grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-gray-700 mb-6">
-              Hello! I'm a passionate software developer with a strong background in creating responsive 
-              and user-friendly web applications. With over X years of experience in the industry, 
-              I've worked on a wide range of projects from small business websites to complex 
-              enterprise applications.
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-foreground/80 mb-6">
+              {t('about', 'description1')}
             </p>
-            <p className="text-gray-700 mb-6">
-              My approach to development focuses on creating clean, maintainable code that delivers 
-              exceptional user experiences. I believe in continuous learning and staying up-to-date 
-              with the latest technologies and best practices in the industry.
+            <p className="text-foreground/80 mb-6">
+              {t('about', 'description2')}
             </p>
-            <p className="text-gray-700 mb-8">
-              When I'm not coding, you can find me hiking in the mountains, reading tech blogs, 
-              or experimenting with new programming languages and frameworks.
+            <p className="text-foreground/80 mb-8">
+              {t('about', 'description3')}
             </p>
             
-            <a 
+            <motion.a 
               href="#" 
               className="btn-primary"
-              aria-label="Download resume"
+              aria-label={t('about', 'downloadResume')}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               <FileText size={18} />
-              Download Resume
-            </a>
-          </div>
+              {t('about', 'downloadResume')}
+            </motion.a>
+          </motion.div>
           
-          <div className="grid grid-cols-2 gap-4">
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="font-bold text-navy text-xl mb-2">Education</h3>
-              <p className="text-gray-600">Bachelor's Degree in Computer Science</p>
-              <p className="text-gray-500 text-sm">University Name, 2015-2019</p>
+          <motion.div 
+            className="grid grid-cols-2 gap-4"
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+              <h3 className="font-bold text-foreground text-xl mb-2">{t('about', 'education')}</h3>
+              <p className="text-foreground/70">{t('about', 'educationDegree')}</p>
+              <p className="text-foreground/50 text-sm">{t('about', 'educationYear')}</p>
             </div>
             
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="font-bold text-navy text-xl mb-2">Experience</h3>
-              <p className="text-gray-600">Senior Developer</p>
-              <p className="text-gray-500 text-sm">Company Name, 2019-Present</p>
+            <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+              <h3 className="font-bold text-foreground text-xl mb-2">{t('about', 'experience')}</h3>
+              <p className="text-foreground/70">{t('about', 'experienceRole')}</p>
+              <p className="text-foreground/50 text-sm">{t('about', 'experienceYear')}</p>
             </div>
             
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="font-bold text-navy text-xl mb-2">Languages</h3>
-              <p className="text-gray-600">English (Native)</p>
-              <p className="text-gray-600">Spanish (Conversational)</p>
+            <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+              <h3 className="font-bold text-foreground text-xl mb-2">{t('about', 'languages')}</h3>
+              <p className="text-foreground/70">{t('about', 'language1')}</p>
+              <p className="text-foreground/70">{t('about', 'language2')}</p>
             </div>
             
-            <div className="bg-gray-50 p-6 rounded-lg shadow-sm">
-              <h3 className="font-bold text-navy text-xl mb-2">Interests</h3>
-              <p className="text-gray-600">Web Development</p>
-              <p className="text-gray-600">UI/UX Design</p>
-              <p className="text-gray-600">Open Source</p>
+            <div className="bg-card p-6 rounded-lg shadow-sm border border-border">
+              <h3 className="font-bold text-foreground text-xl mb-2">{t('about', 'interests')}</h3>
+              <p className="text-foreground/70">{t('about', 'interest1')}</p>
+              <p className="text-foreground/70">{t('about', 'interest2')}</p>
+              <p className="text-foreground/70">{t('about', 'interest3')}</p>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
