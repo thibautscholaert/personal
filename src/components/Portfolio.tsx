@@ -22,7 +22,7 @@ const Portfolio = () => {
       title: t('portfolio', 'project1Title'),
       description: t('portfolio', 'project1Description'),
       image: '/img/tibeechaw.png',
-      tags: ['Next.js', 'MongoDB', 'Firebase', 'TMDB API', 'Web scraping', 'Vercel'],
+      tags: ['Next.js', 'MongoDB', 'Firebase', 'TMDB API', 'Web scraping', 'Vercel', 'Upstash'],
       // githubUrl: '#',
       liveUrl: 'https://tibeechaw.com/',
     },
@@ -30,18 +30,35 @@ const Portfolio = () => {
       id: 2,
       title: t('portfolio', 'project2Title'),
       description: t('portfolio', 'project2Description'),
-      image: '/img/youtube.tibeechaw.png',
-      tags: ['Next.js', 'Python', 'Docker', 'Vercel', 'Render'],
-      // githubUrl: '#',
-      liveUrl: 'https://youtibee-app.vercel.app/',
+      image: '/img/music.tibeechaw.png',
+      tags: ['Next.js', 'Supabase', 'Google Drive API', 'Vercel'],
+      githubUrl: 'https://github.com/thibautscholaert/tibeemusic',
+      liveUrl: 'https://music.tibeechaw.com/',
     },
     {
       id: 3,
       title: t('portfolio', 'project3Title'),
       description: t('portfolio', 'project3Description'),
-      image: 'https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1365&q=80',
-      tags: ['React', 'Vite', 'Vercel', 'lovable.dev'],
-      githubUrl: '#',
+      image: '/img/youtube.tibeechaw.png',
+      tags: ['Next.js', 'Youtube API', 'NextAuth.js', 'Vercel'],
+      githubUrl: 'https://github.com/thibautscholaert/youtibee-app',
+      liveUrl: 'https://youtube.tibeechaw.com',
+    },
+    {
+      id: 4,
+      title: t('portfolio', 'project4Title'),
+      description: t('portfolio', 'project4Description'),
+      image: '/img/youtibee-api.png',
+      tags: ['Python', 'Docker', 'Flask', 'Render'],
+      githubUrl: 'https://github.com/thibautscholaert/youtibee-api',
+    },
+    {
+      id: 5,
+      title: t('portfolio', 'project5Title'),
+      description: t('portfolio', 'project5Description'),
+      image: '/img/me.tibeechaw.png',
+      tags: ['React', 'Vite', 'Vercel', 'lovable.dev', 'EmailJS'],
+      githubUrl: 'https://github.com/thibautscholaert/personal',
       liveUrl: 'https://me.tibeechaw.com/',
     },
   ];
@@ -57,6 +74,16 @@ const Portfolio = () => {
         >
           {t('portfolio', 'title')}
         </motion.h2>
+        <br />
+
+        <motion.h3
+          className="section-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+        >
+          {t('portfolio', 'subtitle1')}
+        </motion.h3>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
@@ -96,7 +123,7 @@ const Portfolio = () => {
                 ))}
               </div>
               <div className="p-6 flex gap-3">
-                <motion.a
+                {project.githubUrl ? <motion.a
                   href={project.githubUrl}
                   className="text-foreground/70 hover:text-accent transition-colors duration-300"
                   aria-label={`${t('portfolio', 'viewGithub')} ${project.title}`}
@@ -107,6 +134,18 @@ const Portfolio = () => {
                 >
                   <Github size={20} />
                 </motion.a>
+                  :
+                  <motion.button
+                    disabled={true}
+                    className="text-foreground/70 hover:text-accent transition-colors duration-300"
+                    aria-label={`${t('portfolio', 'viewGithub')} ${project.title}`}
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <Github size={20} />
+                  </motion.button>
+                }
 
                 {project.liveUrl && (
                   <motion.a
@@ -126,7 +165,7 @@ const Portfolio = () => {
           ))}
         </div>
 
-        {/* <motion.div
+        <motion.div
           className="text-center mt-12"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -134,17 +173,20 @@ const Portfolio = () => {
         >
           <motion.a
             href="https://github.com/thibautscholaert"
+            target='_blank'
             className="btn-secondary"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             {t('portfolio', 'viewAllProjects')}
+            <ExternalLink size={20} />
+
           </motion.a>
-        </motion.div> */}
+        </motion.div>
       </div>
       <motion.a
         href="#technologies"
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-[calc(50%-12px)] transform -translate-x-[calc(50%-12px)]"
         aria-label="Scroll down"
         animate={{ y: [0, 10, 0] }}
         transition={{

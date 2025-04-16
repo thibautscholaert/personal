@@ -40,7 +40,7 @@ const Hero = () => {
               {t('hero', 'description')}
             </motion.p>
             <motion.div
-              className="flex gap-4"
+              className="flex flex-wrap items-center justify-center gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8 }}
@@ -103,7 +103,7 @@ const Hero = () => {
       </div>
       <motion.a
         href="#portfolio"
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-[calc(50%-12px)] transform -translate-x-[calc(50%-12px)]"
         aria-label="Scroll down"
         animate={{ y: [0, 10, 0] }}
         transition={{

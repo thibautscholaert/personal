@@ -100,7 +100,7 @@ const TechStack = () => {
       </div>
       <motion.a
         href="#contact"
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-10 left-[calc(50%-12px)] transform -translate-x-[calc(50%-12px)]"
         aria-label="Scroll down"
         animate={{ y: [0, 10, 0] }}
         transition={{

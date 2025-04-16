@@ -73,7 +73,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
-    
+
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -93,7 +93,7 @@ html {
 @layer base {
   * {
     @apply border-border;
-    }
+  }
 
   body {
     @apply bg-background text-foreground font-sans;
@@ -102,23 +102,22 @@ html {
 
 @layer components {
   .section-container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12 mb-4;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 mb-4;
   }
-  
+
   .section-title {
-    @apply text-3xl md:text-4xl font-bold mb-8 text-white relative 
-    inline-block after:content-[''] after:absolute after:-bottom-2 
-    after:left-0 after:h-1 after:w-1/2 after:bg-lime;
+    @apply text-3xl md:text-4xl font-bold mb-8 text-white relative inline-block after:content-[''] after:absolute after:-bottom-2 after:left-0 after:h-1 after:w-2/3 after:bg-lime;
   }
-  
+
+  .section-subtitle {
+    @apply text-lg md:text-xl font-semibold mb-6 text-white relative inline-block after:content-[''] after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:w-1/2 after:bg-lime;
+  }
+
   .btn-primary {
-    @apply bg-lime hover:bg-lime-light text-white px-6 py-3 rounded-md 
-    transition-colors duration-300 inline-flex items-center gap-2;
+    @apply bg-lime hover:bg-lime-light text-white px-6 py-3 rounded-md transition-colors duration-300 inline-flex items-center gap-2;
   }
-  
+
   .btn-secondary {
-    @apply bg-transparent border-2 border-lime text-lime hover:bg-lime 
-    hover:text-white px-4 py-3 rounded-md transition-colors duration-300 
-    inline-flex items-center gap-2;
+    @apply bg-transparent border-2 border-lime text-lime hover:bg-lime hover:text-white px-4 py-3 rounded-md transition-colors duration-300 inline-flex items-center gap-2;
   }
 }
